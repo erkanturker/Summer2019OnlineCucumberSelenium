@@ -8,7 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
 public class BrowserUtils {
@@ -146,6 +148,17 @@ public class BrowserUtils {
             e.printStackTrace();
         }
 
+    }
+
+    public static List<String>getListofString(List<WebElement> listOfWebElement){
+
+        List <String> listString = new ArrayList<> (  );
+
+        for (WebElement element:listOfWebElement) {
+            listString.add ( element.getText ());
+        }
+
+        return listString;
     }
 
 
