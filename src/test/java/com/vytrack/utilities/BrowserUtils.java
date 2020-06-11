@@ -141,24 +141,29 @@ public class BrowserUtils {
         ExpectedCondition< Boolean > expectation = driver -> ((JavascriptExecutor) driver).executeScript ( "return document.readyState" ).equals ( "complete" );
         ExpectedCondition< Boolean > expectation2 = driver -> ((JavascriptExecutor) driver).executeScript ( "return jQuery.active==0" ).equals ( true );
         try {
-            WebDriverWait wait = new WebDriverWait ( Driver.get () ,timeOutInSeconds);
+            WebDriverWait wait = new WebDriverWait ( Driver.get (), timeOutInSeconds );
             wait.until ( expectation );
             wait.until ( expectation2 );
-        }catch (Throwable e){
-            e.printStackTrace();
+        } catch (Throwable e) {
+            e.printStackTrace ();
         }
 
     }
 
-    public static List<String>getListofString(List<WebElement> listOfWebElement){
+    public static List< String > getListofString ( List< WebElement > listOfWebElement) {
 
-        List <String> listString = new ArrayList<> (  );
+        List< String > listOfString = new ArrayList<> ();
 
-        for (WebElement element:listOfWebElement) {
-            listString.add ( element.getText ());
+        for (WebElement element : listOfWebElement) {
+            String value= element.getText ().trim ();
+            if(value.length ()>0) listOfString.add ( element.getText ().trim () );
         }
 
-        return listString;
+        return listOfString;
+    }
+    public static void waitForPageTitle(String title){
+        WebDriverWait wait = new WebDriverWait(Driver.get (),10);
+        wait.until ( ExpectedConditions.titleIs (title  ) );
     }
 
 

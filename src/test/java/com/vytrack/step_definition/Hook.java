@@ -17,8 +17,6 @@ import io.cucumber.junit.CucumberOptions;
 public class Hook {
     @Before
     public void setup ( ) {
-        System.out.println ("#####################");
-        System.out.println ( "Test setup!" );
         Driver.get ().manage ().window ().maximize ();
     }
 

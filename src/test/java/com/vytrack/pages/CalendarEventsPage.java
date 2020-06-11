@@ -41,16 +41,14 @@ public class CalendarEventsPage extends BasePage {
     }
 
     public List< String > getColumnNames ( ) {
-        List< String > stringList = BrowserUtils.getListofString ( tableColumnName );
-        return stringList;
+        return BrowserUtils.getListofString ( tableColumnName );
     }
 
     public List<String>getListperViewItem(){
         BrowserUtils.waitforVisibilty ( viewPerPageToggle,10 );
         BrowserUtils.waitForClickable ( viewPerPageToggle,10 );
         viewPerPageToggle.click ();
-        List<String> stringList = BrowserUtils.getListofString ( viewPerPAgeOption );
-        return stringList;
+        return BrowserUtils.getListofString ( viewPerPAgeOption );
     }
 
 

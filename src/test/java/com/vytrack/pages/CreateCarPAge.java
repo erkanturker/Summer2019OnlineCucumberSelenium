@@ -17,14 +17,29 @@ public class CreateCarPAge extends BasePage {
     @FindBy(name = "custom_entity_type[Location]")
     public WebElement locationElement;
 
-    @FindBy(css = "[class='btn btn-success action-button']")
-    public WebElement saveButtonElement;
+    @FindBy(name = "custom_entity_type[ModelYear]")
+    public WebElement modelYearElement;
+
+    @FindBy(name = "custom_entity_type[Color]")
+    public WebElement colorElement;
 
     @FindBy(css = "div[id*=FuelType]")
     public WebElement fuelTypeElement;
 
     @FindBy(name = "custom_entity_type[Logo][file]")
     public WebElement logoElement;
+
+    @FindBy(xpath = "//button[@type='submit'][contains(text(),'Save and Close')]")
+    public WebElement getSaveButtonElementFromMenu;
+
+    @FindBy(css = "[class='btn btn-success action-button']")
+    public WebElement saveButtonElement;
+
+    @FindBy(xpath = "//li//button[contains(text(),'Save and New')]")
+    public WebElement saveAndNew;
+
+    @FindBy(css = "a[class='btn-success btn dropdown-toggle']")
+    public WebElement SaveandCloseToggle;
 
 
 
@@ -74,8 +89,23 @@ if checkbox already selected it will not do anyting
 
      */
     public void uploadLoga (String pathToTheFile) {
-        BrowserUtils.waitforVisibilty ( logoElement,10 );
+        BrowserUtils.waitforVisibilty ( logoElement, 10 );
         logoElement.sendKeys ( pathToTheFile );
+    }
+
+    public void clickSaveAndNew ( ) {
+        waitUntilLoaderMaskDisappear ();
+       BrowserUtils.clickWithWait ( SaveandCloseToggle );
+        BrowserUtils.wait ( 4 );
+        BrowserUtils.waitforVisibilty ( saveAndNew, 5 );
+        BrowserUtils.clickWithWait ( saveAndNew );
+    }
+
+    public void saveAndClose ( ) {
+        waitUntilLoaderMaskDisappear ();
+        BrowserUtils.clickWithWait ( SaveandCloseToggle );
+        BrowserUtils.waitforVisibilty ( getSaveButtonElementFromMenu, 5 );
+        BrowserUtils.clickWithWait ( getSaveButtonElementFromMenu );
     }
 
 

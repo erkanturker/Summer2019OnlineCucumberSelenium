@@ -5,6 +5,7 @@ package com.vytrack.pages;
 //every page class will store webelements and methods related to that page
 
 
+import com.vytrack.utilities.ConfigurationReader;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,6 +47,29 @@ public class LoginPage extends BasePage {
     public void login (String userName, String password) {
         userNameInput.sendKeys ( userName );
         passwordInput.sendKeys ( password, Keys.ENTER );
+    }
+
+    public void login (String role) {
+        role = role.replace ( " ", "" );
+        role = role.toLowerCase ();
+        switch (role) {
+            case "salesmanager":
+                userNameInput.sendKeys ( ConfigurationReader.getProperty ( "SalesManagerUsername" ) );
+                passwordInput.sendKeys ( ConfigurationReader.getProperty ( "SalesManagerPassword" ), Keys.ENTER );
+                break;
+            case "driver":
+                userNameInput.sendKeys ( ConfigurationReader.getProperty ( "DriverUsername" ) );
+                passwordInput.sendKeys ( ConfigurationReader.getProperty ( "DriverPassword" ), Keys.ENTER );
+                break;
+            case "storemanager":
+                userNameInput.sendKeys ( ConfigurationReader.getProperty ( "StoreManagerUsername" ) );
+                passwordInput.sendKeys ( ConfigurationReader.getProperty ( "StoreManagerPassword" ), Keys.ENTER );
+                break;
+            default:
+                System.out.println ( "There is no such a Role" );
+                break;
+
+        }
     }
 
 
