@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/features/activities", "src/test/resources/features/activities"},
+        features = {"src/test/resources/features/Activities", "src/test/resources/features/Fleet"},
         glue = "com/vytrack/step_definition",
         dryRun = false,
         plugin = {"html:target/default-cucumber-reports",
