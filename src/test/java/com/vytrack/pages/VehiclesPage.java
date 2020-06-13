@@ -10,9 +10,10 @@ public class VehiclesPage extends BasePage {
     public WebElement createCarElement;
     //use this method to click on Create a Car button
     public void clickToCreateCar ( ) {
-        BrowserUtils.waitforVisibilty ( createCarElement, 10 );
-        BrowserUtils.waitForClickable ( createCarElement, 10 );
-        createCarElement.click ();
+       // BrowserUtils.waitforVisibilty ( createCarElement, 10 );
+     //   BrowserUtils.waitForClickable ( createCarElement, 10 );
+        BrowserUtils.clickWithWait ( createCarElement);
+       // createCarElement.click ();
     }
 
 
